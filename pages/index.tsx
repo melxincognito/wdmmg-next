@@ -112,25 +112,31 @@ const Home: NextPage = () => {
           {purchases.length > 0 ? (
             <>
               {purchases.map((purchase) => (
-                <div key={purchase.index} className={styles.purchaseTile}>
-                  <span className={styles.purchaseTileDecorSpan}></span>
-                  <span className={styles.purchaseTilePurchasesSpan}>
-                    <p>
-                      {" "}
-                      <u>Purchase:</u> {purchase.name}
-                    </p>
-                  </span>
-                  <span className={styles.purchaseTileAmountSpan}>
-                    <p>
-                      {" "}
-                      <u>Amount:</u> ${purchase.amount}
-                    </p>
+                <div
+                  tabIndex={0}
+                  key={purchase.index}
+                  className={styles.purchaseTile}
+                >
+                  <span className={styles.purchaseInfo}>
+                    <span className={styles.purchaseTilePurchasesSpan}>
+                      <p>
+                        {" "}
+                        <b>Purchase Name:</b> {purchase.name}
+                      </p>
+                    </span>
+
+                    <span className={styles.purchaseTileAmountSpan}>
+                      <p>
+                        {" "}
+                        <b>Purchase Amount:</b> ${purchase.amount}
+                      </p>
+                    </span>
                   </span>
 
                   <button
                     onClick={() => removeFromPurchases(purchase.index)}
                     className={styles.purchaseTileButton}
-                    aria-label="Delete purchase."
+                    aria-label="Delete purchase button."
                   >
                     X
                   </button>
