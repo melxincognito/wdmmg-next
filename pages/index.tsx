@@ -1,17 +1,34 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { NavBar } from "../components/NavBar";
+
+interface Purchase {
+  name: string;
+  amount: number;
+  date: string;
+  index: number;
+}
 
 const Home: NextPage = () => {
   const [purchaseName, setPurchaseName] = useState<string>("");
   const [purchaseAmount, setPurchaseAmount] = useState<number>(0);
   const [purchaseDate, setPurchaseDate] = useState<string>("");
 
-  const [purchases, setPurchases] = useState<
-    { name: string; amount: number; date: string; index: number }[]
-  >([]);
+  const [purchases, setPurchases] = useState<Purchase[]>([]);
+
+  const [sortedPurchases, setSortedPurchases] = useState<Purchase[]>([]);
+
+  function byDate(a: Purchase, b: Purchase) {
+    return new Date(a.date).valueOf() - new Date(b.date).valueOf();
+  }
+
+  useEffect(() => {
+    const dateSortedPurchases = purchases.sort(byDate);
+
+    setSortedPurchases(dateSortedPurchases);
+  }, [purchases]);
 
   const handleChangePurchaseName = (e: ChangeEvent<HTMLInputElement>) => {
     setPurchaseName(e.target.value);
@@ -43,20 +60,20 @@ const Home: NextPage = () => {
       alert("Please fill purchase amount input field");
     } else {
       let index = purchases.length + 1;
-      // date comes out automatically formatted as yyyy/mm/dd and
+      /*     // date comes out automatically formatted as yyyy/mm/dd and
       // isn't consistent with the input format
       let splitDate = purchaseDate.split("-");
       let month = splitDate[1];
       let day = splitDate[2];
       let year = splitDate[0];
       let formattedDate = `${month}-${day}-${year}`;
-
+*/
       setPurchases((prevPurchases) => [
         ...prevPurchases,
         {
           name: purchaseName,
           amount: purchaseAmount,
-          date: formattedDate,
+          date: purchaseDate,
           index: index,
         },
       ]);
