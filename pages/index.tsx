@@ -7,9 +7,10 @@ import { NavBar } from "../components/NavBar";
 const Home: NextPage = () => {
   const [purchaseName, setPurchaseName] = useState<string>("");
   const [purchaseAmount, setPurchaseAmount] = useState<number>(0);
+  const [purchaseDate, setPurchaseDate] = useState<string>("");
 
   const [purchases, setPurchases] = useState<
-    { name: string; amount: number; index: number }[]
+    { name: string; amount: number; date: string; index: number }[]
   >([]);
 
   const handleChangePurchaseName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,9 +21,14 @@ const Home: NextPage = () => {
     setPurchaseAmount(parseFloat(e.target.value));
   };
 
+  const handleChangePurchaseDate = (e: ChangeEvent<HTMLInputElement>) => {
+    setPurchaseDate(e.target.value);
+  };
+
   const resetForm = () => {
     setPurchaseName("");
     setPurchaseAmount(0);
+    setPurchaseDate("");
   };
 
   const submitPurchase = (e: any) => {
@@ -37,12 +43,20 @@ const Home: NextPage = () => {
       alert("Please fill purchase amount input field");
     } else {
       let index = purchases.length + 1;
+      // date comes out automatically formatted as yyyy/mm/dd and
+      // isn't consistent with the input format
+      let splitDate = purchaseDate.split("-");
+      let month = splitDate[1];
+      let day = splitDate[2];
+      let year = splitDate[0];
+      let formattedDate = `${month}-${day}-${year}`;
 
       setPurchases((prevPurchases) => [
         ...prevPurchases,
         {
           name: purchaseName,
           amount: purchaseAmount,
+          date: formattedDate,
           index: index,
         },
       ]);
@@ -71,10 +85,7 @@ const Home: NextPage = () => {
       <NavBar />
 
       <main className={styles.main}>
-        <form
-          onSubmit={submitPurchase}
-          style={{ display: "grid", gap: "1rem" }}
-        >
+        <form onSubmit={submitPurchase} className={styles.purchaseForm}>
           <div className={styles.formInputsDiv}>
             <div className={styles.formControl}>
               <label htmlFor="purchase-name-input">Purchase Name</label>
@@ -84,9 +95,9 @@ const Home: NextPage = () => {
                 placeholder="Purchase Name"
                 type="text"
                 onChange={handleChangePurchaseName}
-                aria-label="Purchase name input."
+                name="Purchase name"
+                role="textbox"
                 value={purchaseName}
-                autoComplete="on"
               />
             </div>
             <div className={styles.formControl}>
@@ -99,8 +110,40 @@ const Home: NextPage = () => {
                 type="number"
                 step=".01"
                 onChange={handleChangePurchaseAmount}
-                aria-label="Purchase amount input."
+                name="Purchase amount"
+                role="textbox"
               />
+            </div>
+
+            <div className={styles.formControl}>
+              <label htmlFor="purchase-date-input"> Purchase Date</label>
+              <input
+                id="purchase-date-input"
+                className={styles.purchaseInput}
+                onChange={handleChangePurchaseDate}
+                value={purchaseDate}
+                type="date"
+                name="Purchase date"
+                role="textbox"
+              />
+            </div>
+
+            <div className={styles.formControl}>
+              <label htmlFor="purchase-category-selector">
+                {" "}
+                Purchase Category
+              </label>
+
+              <select
+                className={styles.purchaseInput}
+                id="purchase-category-selector"
+                name="Purchase category"
+                role="select"
+              >
+                <option value="food">Food</option>
+                <option value="housing">Housing</option>
+                <option value="transportation">Transportation</option>
+              </select>
             </div>
           </div>
 
@@ -108,7 +151,8 @@ const Home: NextPage = () => {
             {" "}
             Submit Purchase
           </button>
-        </form>
+        </form>{" "}
+        <button onClick={() => console.log(purchaseDate)}> console</button>
         <div className={styles.purchasesList} aria-live="assertive">
           {purchases.length > 0 ? (
             <>
@@ -119,6 +163,13 @@ const Home: NextPage = () => {
                   className={styles.purchaseTile}
                 >
                   <span className={styles.purchaseInfo}>
+                    <span className={styles.purchaseTileDateSpan}>
+                      <p>
+                        {" "}
+                        <b>{purchase.date}</b>
+                      </p>
+                    </span>
+
                     <span className={styles.purchaseTilePurchasesSpan}>
                       <p>
                         {" "}
