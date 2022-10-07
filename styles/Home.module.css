@@ -77,9 +77,8 @@
 
 .purchaseTileDateSpan {
   width: 8vw;
-  background-color: rgb(58, 2, 96);
-  color: white;
   height: 3.8vw;
+  margin: 0.5em;
   display: flex;
   align-items: center;
   justify-content: center;
