@@ -1,10 +1,16 @@
 ## ¿ Where Did My Money Go ?
 
+
+
 ### Description
 
 <ul>
 <li>Recreating my <a href='https://github.com/melxincognito/where-did-my-money-go-typescript' target='_blank'>Where Did My Money Go? </a> purchase tracking application using Next.JS, vanilla CSS and TypeScript. The application is being recreated to ensure the application is completely accessible to users who are using assistive technologies to access the web. </li>
 </ul>
+
+
+https://user-images.githubusercontent.com/86626927/194476964-4c594fdf-2231-4644-9a9a-8614ddab0bc1.mov
+
 
 ## Getting Started
 
