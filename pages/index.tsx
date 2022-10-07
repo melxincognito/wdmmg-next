@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { NavBar } from "../components/NavBar";
 
 const Home: NextPage = () => {
   const [purchaseName, setPurchaseName] = useState<string>("");
@@ -62,15 +63,15 @@ const Home: NextPage = () => {
     "https://images.unsplash.com/photo-1572859704906-ab0716da285f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80";
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Where did my money go ?</title>
+        <title> ¿ Where did my money go ?</title>
         <meta name="description" content="Home page for content" />
         <link rel="icon" href={faviconImageUrl} />
       </Head>
+      <NavBar />
 
       <main className={styles.main}>
-        <h1>Where did my money go?</h1>
         <form
           onSubmit={submitPurchase}
           style={{ display: "grid", gap: "1rem" }}
@@ -148,7 +149,7 @@ const Home: NextPage = () => {
           )}
         </div>
       </main>
-    </div>
+    </>
   );
 };
 
