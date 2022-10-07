@@ -66,7 +66,6 @@ const Home: NextPage = () => {
   };
 
   const removeFromPurchases = (purchaseIndex: number) => {
-    console.log(purchaseIndex);
     setPurchases(
       purchases.filter((purchase) => purchase.index !== purchaseIndex)
     );
@@ -152,7 +151,6 @@ const Home: NextPage = () => {
             Submit Purchase
           </button>
         </form>{" "}
-        <button onClick={() => console.log(purchaseDate)}> console</button>
         <div className={styles.purchasesList} aria-live="assertive">
           {purchases.length > 0 ? (
             <>
