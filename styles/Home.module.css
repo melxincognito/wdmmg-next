@@ -16,7 +16,7 @@
 }
 
 .purchaseInput {
-  width: 30vw;
+  width: 40vw;
   height: 5vh;
 }
 
@@ -24,6 +24,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+  justify-content: center;
 }
 .formControl {
   display: grid;
@@ -60,7 +61,6 @@
   border-radius: 3px;
   align-content: center;
   align-items: center;
-
   justify-content: space-between;
 }
 
