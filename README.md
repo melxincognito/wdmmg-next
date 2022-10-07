@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Where did my money go
+
+### Description
+
+<ul>
+<li>Recreating my <b>Where Did My Money Go?</b> purchase tracking application using Next.JS, vanilla CSS and TypeScript. The application is being recreated to ensure the application is completely accessible to users who are using assistive technologies to access the web. </li>
+</ul>
 
 ## Getting Started
 
