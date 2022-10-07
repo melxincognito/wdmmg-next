@@ -1,0 +1,10 @@
+.navBar {
+  left: 0;
+  right: 0;
+  height: 10vh;
+  background-color: rgb(48, 48, 48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 40px rgba(122, 122, 122, 0.4);
+}
