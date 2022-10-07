@@ -10,6 +10,11 @@
   padding: 0 2rem;
 }
 
+.purchaseForm {
+  display: grid;
+  gap: 1rem;
+}
+
 .purchaseInput {
   width: 30vw;
   height: 5vh;
@@ -17,6 +22,7 @@
 
 .formInputsDiv {
   display: flex;
+  flex-wrap: wrap;
   gap: 3rem;
 }
 .formControl {
@@ -54,7 +60,7 @@
   border-radius: 3px;
   align-content: center;
   align-items: center;
-  padding-left: 3vw;
+
   justify-content: space-between;
 }
 
@@ -69,14 +75,27 @@
   border-radius: 3px 0px 0px 3px;
 }
 
+.purchaseTileDateSpan {
+  width: 8vw;
+  background-color: rgb(58, 2, 96);
+  color: white;
+  height: 3.8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .purchaseTilePurchasesSpan {
   width: 35.5vw;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .purchaseTileAmountSpan {
   width: 35.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .purchaseTileButton {
@@ -84,10 +103,6 @@
 }
 
 @media (max-width: 600px) {
-  .formInputsDiv {
-    display: grid;
-    gap: 1rem;
-  }
   .purchaseInput {
     width: 90vw;
   }
